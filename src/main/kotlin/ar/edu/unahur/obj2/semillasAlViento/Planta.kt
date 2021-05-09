@@ -1,8 +1,10 @@
 package ar.edu.unahur.obj2.semillasAlViento
-
+//Mutacion controlada : Se genear una variable Var en la cual luego nunca se le cambio el valor.
 abstract class Planta(val anioObtencionSemilla: Int, var altura: Float) {
   fun esFuerte() = this.horasDeSolQueTolera() > 10
 
+  // Acoplamiento- Es un metodo que acopla a las clases parcela y planta.
+  // Cohesivo - Poco cohesivo ya que realiza metodos que no hacen falta.
   fun parcelaTieneComplicaciones(parcela: Parcela) =
     parcela.plantas.any { it.horasDeSolQueTolera() < parcela.horasSolPorDia }
 
