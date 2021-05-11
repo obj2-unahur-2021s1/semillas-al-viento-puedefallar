@@ -1,5 +1,5 @@
 package ar.edu.unahur.obj2.semillasAlViento
-//Mutacion controlada : Se genear una variable Var en la cual luego nunca se le cambio el valor.
+//Mutacion controlada : Se genera una variable Var a la cual luego nunca se le cambio el valor.
 abstract class Planta(val anioObtencionSemilla: Int, var altura: Float) {
   fun esFuerte() = this.horasDeSolQueTolera() > 10
 
