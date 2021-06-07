@@ -9,9 +9,9 @@ import io.kotest.matchers.shouldBe
 
 class SemillasTest: DescribeSpec({
     val menta = Menta(2020, 0.3F)
-    val soja = Soja(2021, 0.7F, false)
-    val sojaAlta = Soja(2019, 1.5F, false)
-    val sojaTrans = Soja(2021, 0.8F, true)
+    val soja = Soja(2021, 0.7F)
+    val sojaAlta = Soja(2019, 1.5F)
+    val sojaTrans = SojaTransgenica(2021, 0.8F)
 
     val parcelaChica = Parcela(100,75,9)
     val parcelaGrande = Parcela(200,150,8)
@@ -56,8 +56,10 @@ class SemillasTest: DescribeSpec({
             parcelaChica.superficie() shouldBe (7500)
             parcelaChica.cantidadMaximaPlantas() shouldBe (1500)
 
-            // No se puede hacer un test de tieneComplicaciones ya que no esta implementado en el codigo
+            //Se agrega el test del método tieneComplicaciones(), ahora agregado a la Clase Parcela.
+            parcelaChica.tieneComplicaciones().shouldBeFalse()
             parcelaChica.plantar(menta)
+
             // no se puede testear con un shouldThrowAny ya que el codigo no devuelve un error sino un string
             parcelaChica.plantas.shouldNotContain(menta)
         }
@@ -77,10 +79,6 @@ class SemillasTest: DescribeSpec({
         noelia.plantarEstrategicamente(menta)
 
         parcelaGrande.plantas.shouldContainExactly(menta,soja,sojaAlta,sojaTrans,menta)
-
-
-
-
 
     }
 })
