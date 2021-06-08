@@ -1,4 +1,5 @@
 package ar.edu.unahur.obj2.semillasAlViento
+import io.kotest.assertions.throwables.shouldThrowAny
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.booleans.shouldBeFalse
 import io.kotest.matchers.booleans.shouldBeTrue
@@ -58,10 +59,9 @@ class SemillasTest: DescribeSpec({
 
             //Se agrega el test del método tieneComplicaciones(), ahora agregado a la Clase Parcela.
             parcelaChica.tieneComplicaciones().shouldBeFalse()
-            parcelaChica.plantar(menta)
 
-            // no se puede testear con un shouldThrowAny ya que el codigo no devuelve un error sino un string
-            parcelaChica.plantas.shouldNotContain(menta)
+            shouldThrowAny {   parcelaChica.plantar(menta)}
+
         }
 
         it ("cualidades de una parcela grande"){
