@@ -1,16 +1,15 @@
 package ar.edu.unahur.obj2.semillasAlViento
-//Mutacion controlada : Se genera una variable Var a la cual luego nunca se le cambio el valor.
+
+//cambiamos var por val
 abstract class Planta(val anioObtencionSemilla: Int, val altura: Float) {
 
   fun esFuerte() = this.horasDeSolQueTolera() > 10
 
-  // Acoplamiento- Es un metodo que acopla a las clases parcela y planta.
-  // Cohesivo - Poco cohesivo ya que realiza metodos que no hacen falta.
   // Se pasa el método tiene complicaciones a la clase Parcela
 
   abstract fun horasDeSolQueTolera(): Int
 
-  //redundancia minima:  La primera parte (this.esFuerte()) está repetida en todas las subclases.
+  //this.esFuerte()) pasa a la funcion abstracta
   open fun daSemillas(): Boolean = this.esFuerte()
 }
 
@@ -18,8 +17,7 @@ class Menta(anioObtencionSemilla: Int, altura: Float) : Planta(anioObtencionSemi
   override fun horasDeSolQueTolera() = 6
   override fun daSemillas() = super.daSemillas() || altura > 0.4
 }
-//*cohesion: con una sola clase se está queriendo representar a dos tipos de Soja,
-// usando un booleano para diferenciarlas.
+//representamos soja y soja transgénica por separado
 open class Soja(anioObtencionSemilla: Int, altura: Float) : Planta(anioObtencionSemilla, altura) {
   override fun horasDeSolQueTolera(): Int  {
     return when {

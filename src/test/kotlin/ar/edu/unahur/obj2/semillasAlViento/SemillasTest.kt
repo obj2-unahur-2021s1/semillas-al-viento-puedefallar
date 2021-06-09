@@ -60,7 +60,7 @@ class SemillasTest: DescribeSpec({
             //Se agrega el test del método tieneComplicaciones(), ahora agregado a la Clase Parcela.
             parcelaChica.tieneComplicaciones().shouldBeFalse()
 
-            shouldThrowAny {   parcelaChica.plantar(menta)}
+            shouldThrowAny {  parcelaChica.plantar(menta)}
 
         }
 
